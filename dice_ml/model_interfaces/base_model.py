@@ -51,7 +51,8 @@ class BaseModel:
         input_instance = self.transformer.transform(input_instance)
         if model_score:
             if self.model_type == ModelTypes.Classifier:
-                return self.model.predict_proba(input_instance)
+                # return self.model.predict_proba(input_instance)
+                return self.model.decision_function(input_instance)
             else:
                 return self.model.predict(input_instance)
         else:
